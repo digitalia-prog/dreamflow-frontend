@@ -2,12 +2,9 @@
 const translations = {
   fr: {
     generating: '⏳ Génération en cours...',
-    error_prompt: '⚠️ Veuillez entrer une description de votre produit/service',
-    error_count: '⚠️ Le nombre de scripts doit être entre 1 et 1000',
+    error_prompt: '⚠️ Veuillez entrer une description',
+    error_count: '⚠️ Le nombre doit être entre 1 et 1000',
     scripts_generated: 'Scripts Générés',
-    hook_viral: 'Hooks Viraux',
-    full_script: 'Script Complet',
-    agency_package: 'Package Agence',
     duration: 'Durée',
     hook: 'Hook',
     body: 'Corps',
@@ -15,18 +12,14 @@ const translations = {
     tips: 'Conseils Pro',
     platform: 'Plateforme',
     niche: 'Niche',
-    type: 'Type',
     note: 'Note',
-    connect_api: 'Connecte l\'API DreamFlow pour la génération complète avec IA !'
+    connect_api: 'Connecte l\'API DreamFlow pour la génération complète !'
   },
   en: {
     generating: '⏳ Generating...',
-    error_prompt: '⚠️ Please enter a product/service description',
-    error_count: '⚠️ Script count must be between 1 and 1000',
+    error_prompt: '⚠️ Please enter a description',
+    error_count: '⚠️ Count must be between 1 and 1000',
     scripts_generated: 'Generated Scripts',
-    hook_viral: 'Viral Hooks',
-    full_script: 'Full Script',
-    agency_package: 'Agency Package',
     duration: 'Duration',
     hook: 'Hook',
     body: 'Body',
@@ -34,93 +27,48 @@ const translations = {
     tips: 'Pro Tips',
     platform: 'Platform',
     niche: 'Niche',
-    type: 'Type',
     note: 'Note',
-    connect_api: 'Connect DreamFlow API for full AI generation!'
+    connect_api: 'Connect DreamFlow API for full generation!'
   },
   es: {
     generating: '⏳ Generando...',
-    error_prompt: '⚠️ Por favor ingrese una descripción del producto/servicio',
-    error_count: '⚠️ El número de scripts debe estar entre 1 y 1000',
+    error_prompt: '⚠️ Por favor ingrese una descripción',
+    error_count: '⚠️ El número debe estar entre 1 y 1000',
     scripts_generated: 'Scripts Generados',
-    hook_viral: 'Hooks Virales',
-    full_script: 'Script Completo',
-    agency_package: 'Paquete Agencia',
     duration: 'Duración',
     hook: 'Gancho',
-    body:
-'Cuerpo',
+    body: 'Cuerpo',
     cta: 'Llamada a la Acción',
     tips: 'Consejos Pro',
     platform: 'Plataforma',
     niche: 'Nicho',
-    type: 'Tipo',
     note: 'Nota',
-    connect_api: '¡Conecta la API de DreamFlow para generación completa con IA!'
+    connect_api: '¡Conecta la API de DreamFlow!'
   }
 };
 
-// Templates professionnels
 const templates = {
-  'ugc-beaute': {
-    contentType: 'ugc',
-    niche: 'beaute',
-    platform: 'instagram-reels',
-    scriptCount: 3,
-    prompt: 'Sérum anti-âge à la vitamine C, résultats visibles en 14 jours, texture légère, convient peaux sensibles'
-  },
-  'ugc-tech': {
-    contentType: 'ugc',
-    niche: 'tech',
-    platform: 'tiktok',
-    scriptCount: 5,
-    prompt: 'Écouteurs sans fil à réduction de bruit active, autonomie 30h, son haute fidélité'
-  },
-  'hook-viral': {
-    contentType: 'hook',
-    niche: 'ecommerce',
-    platform: 'tiktok',
-    scriptCount: 10,
-    prompt: 'Produit innovant qui résout un problème du quotidien'
-  },
-  'script-pub': {
-    contentType: 'script',
-    niche: 'ecommerce',
-    platform: 'facebook-reels',
-    scriptCount: 3,
-    prompt: 'Campagne publicitaire pour lancement de produit e-commerce'
-  },
-  'agence': {
-    contentType: 'agence',
-    niche: 'agence-marketing',
-    platform: 'tiktok',
-    scriptCount: 50,
-    prompt: 'Agence marketing digital spécialisée en UGC et création de contenu viral pour marques e-commerce'
-  }
+  'ugc-beaute': { contentType: 'ugc', niche: 'beaute', platform: 'instagram-reels', scriptCount: 3, prompt: 'Sérum anti-âge vitamine C' },
+  'ugc-tech': { contentType: 'ugc', niche: 'tech', platform: 'tiktok', scriptCount: 5, prompt: 'Écouteurs sans fil à réduction de bruit' },
+  'hook-viral': { contentType: 'hook', niche: 'ecommerce', platform: 'tiktok', scriptCount: 10, prompt: 'Produit innovant' },
+  'script-pub': { contentType: 'script', niche: 'ecommerce', platform: 'facebook-reels', scriptCount: 3, prompt: 'Campagne pub e-commerce' },
+  'agence': { contentType: 'agence', niche: 'agence-marketing', platform: 'tiktok', scriptCount: 50, prompt: 'Agence marketing digital UGC' }
 };
-// Durées recommandées par plateforme
+
 const platformDurations = {
-  'tiktok': '15-60s',
-  'instagram-reels': '15-90s',
-  'instagram-stories': '15s',
-  'facebook-reels': '15-60s',
-  'facebook-stories': '15s',
-  'youtube-shorts': '15-60s',
-  'snapchat': '10s',
-  'linkedin': '30-90s',
-  'twitter': '30-45s',
-  'pinterest': '15-30s'
+  'tiktok': '15-60s', 'instagram-reels': '15-90s', 'instagram-stories': '15s',
+  'facebook-reels': '15-60s', 'facebook-stories': '15s', 'youtube-shorts': '15-60s',
+  'snapchat': '10s', 'linkedin': '30-90s', 'twitter': '30-45s', 'pinterest': '15-30s'
 };
 
 function loadTemplate(templateName) {
-  const template = templates[templateName];
-  if (!template) return;
-  
-  document.getElementById('contentType').value = template.contentType;
-  document.getElementById('niche').value = template.niche;
-  document.getElementById('platform').value = template.platform;
-  document.getElementById('scriptCount').value = template.scriptCount;
-  document.getElementById('prompt').value = template.prompt;
+  const t = templates[templateName];
+  if (!t) return;
+  document.getElementById('contentType').value = t.contentType;
+  document.getElementById('niche').value = t.niche;
+  document.getElementById('platform').value = t.platform;
+  document.getElementById('scriptCount').value = t.scriptCount;
+  document.getElementById('prompt').value = t.prompt;
 }
 
 function generate() {
@@ -131,57 +79,193 @@ function generate() {
   const scriptCount = parseInt(document.getElementById('scriptCount').value);
   const prompt = document.getElementById('prompt').value;
   const result = document.getElementById('result');
-  
   const t = translations[language];
   
   if (!prompt) {
-    result.innerHTML = '<p style="color: #ff6b6b;">' + t.error_prompt + '</p>';
+    result.innerHTML = '<p style="color:#ff6b6b;">' + t.error_prompt + '</p>';
     result.classList.add('show');
     return;
   }
   
   if (scriptCount < 1 || scriptCount > 1000) {
-    result.innerHTML = '<p style="color: #ff6b6b;">' + t.error_count + '</p>';
+    result.innerHTML = '<p style="color:#ff6b6b;">' + t.error_count + '</p>';
     result.classList.add('show');
     return;
   }
   
-  result.innerHTML = '<p style="color: #667eea;">' + t.generating + '</p>';
+  result.innerHTML = '<p style="color:#667eea;">' + t.generating + '</p>';
   result.classList.add('show');
   
   setTimeout(() => {
-    let generatedContent = '';
-    
-    if (contentType === 'ugc') {
-      generatedContent = generateUGC(niche, platform, prompt, scriptCount, language);
-    } else if (contentType === 'hook') {
-      generatedContent = generateHooks(niche, platform, prompt, scriptCount, language);
-    } else if (contentType === 'script') {
-      generatedContent = generateFullScript(niche, platform, prompt, scriptCount, language);
-    } else if (contentType === 'agence') {
-      generatedContent = generateAgencyScripts(niche, platform, prompt, scriptCount, language);
-    }
-    
-    result.innerHTML = generatedContent;
+    let content = '';
+    if (contentType === 'ugc') content = generateUGC(niche, platform, prompt, scriptCount, language);
+    else if (contentType === 'hook') content = generateHooks(niche, platform, prompt, scriptCount, language);
+    else if (contentType === 'script') content = generateFullScript(niche, platform, prompt, scriptCount, language);
+    else if (contentType === 'agence') content = generateAgencyScripts(niche, platform, prompt, scriptCount, language);
+    result.innerHTML = content;
   }, 1500);
 }
 
 function generateUGC(niche, platform, prompt, count, lang) {
-  return '<h2 style="color: #667eea;">✨ ' + count + ' Scripts UGC</h2><p>Contenu UGC optimisé pour ' + platform + '</p>';
+  const t = translations[lang];
+  const duration = platformDurations[platform] || '30s';
+  
+  const hooks = {
+    fr: ["Personne ne m'avait dit que ça ferait ÇA !", "POV: Tu découvres LE produit qui change tout", "J'ai testé 30 jours et..."],
+    en: ["Nobody told me this would do THAT!", "POV: You discover THE game-changing product", "I tested for 30 days and..."],
+    es: ["¡Nadie me dijo que haría ESO!", "POV: Descubres EL producto que lo cambia todo", "Lo probé 30 días y..."]
+  };
+  
+  return `
+<h2 style="color:#667eea;margin-bottom:20px;">✨ ${count} ${t.scripts_generated} UGC</h2>
+
+<div style="background:#f8f9fa;padding:20px;border-radius:10px;margin-bottom:20px;">
+  <p><strong>${t.platform}:</strong> ${platform}</p>
+  <p><strong>${t.duration}:</strong> ${duration}</p>
+  <p><strong>${t.niche}:</strong> ${niche}</p>
+</div>
+
+<div style="background:#fff3cd;padding:20px;border-radius:10px;margin-bottom:20px;">
+  <h3>🎬 Script UGC #1</h3>
+  <p><strong>🎯 ${t.hook} (0-3s):</strong><br>"${hooks[lang][0]}"</p>
+  <p><strong>💬 ${t.body} (3-20s):</strong><br>
+  ${lang==='fr'?'- Montrer le produit en action':'- Show product in action'}<br>
+  ${lang==='fr'?'- Partager ton expérience':'- Share your experience'}<br>
+  ${lang==='fr'?'- Être authentique':'- Be authentic'}</p>
+  <p><strong>🚀 ${t.cta}:</strong><br>"${lang==='fr'?'Lien en bio pour -20% !':lang==='en'?'Link in bio for -20%!':'¡Enlace en bio para -20%!'}"</p>
+</div>
+
+<div style="background:#d1ecf1;padding:20px;border-radius:10px;margin-bottom:20px;">
+  <h3>🎬 Script UGC #2</h3>
+  <p><strong>🎯 ${t.hook}:</strong><br>"${hooks[lang][1]}"</p>
+  <p><strong>💬 ${t.body}:</strong><br>
+  ${lang==='fr'?'- Avant/Après visuel':'- Before/After visual'}<br>
+  ${lang==='fr'?'- Témoignage sincère':'- Honest testimonial'}</p>
+</div>
+
+${count > 2 ? `
+<div style="background:#d4edda;padding:20px;border-radius:10px;margin-bottom:20px;">
+  <h3>🎬 Script UGC #3</h3>
+  <p><strong>🎯 ${t.hook}:</strong><br>"${hooks[lang][2]}"</p>
+  <p><strong>💬 ${t.body}:</strong><br>
+  ${lang==='fr'?'- Story-telling personnel':'- Personal storytelling'}</p>
+</div>
+` : ''}
+
+<div style="background:#e2e3e5;padding:20px;border-radius:10px;">
+  <h3>💡 ${t.tips}</h3>
+  <ul style="line-height:2;">
+    <li>✅ ${lang==='fr'?'Sois naturel':'Be natural'}</li>
+    <li>✅ ${lang==='fr'?'Éclairage naturel':'Natural lighting'}</li>
+    <li>✅ ${lang==='fr'?'Ajoute des sous-titres':'Add subtitles'}</li>
+  </ul>
+</div>
+
+<p style="margin-top:20px;padding:15px;background:#fff3cd;border-radius:10px;">
+  <strong>${t.note}:</strong> ${t.connect_api}
+</p>
+`;
 }
 
 function generateHooks(niche, platform, prompt, count, lang) {
-  return '<h2 style="color: #667eea;">🔥 ' + count + ' Hooks Viraux</h2><p>Hooks optimisés</p>';
+  const hooksDB = {
+    fr: ["Personne n'en parle mais...", "J'ai découvert le secret", "Arrête de faire ça en 2025", "POV: Tu découvres la vérité", "Attendez... QUOI ?!", "Je pensais pas que c'était possible", "Tout le monde se trompe", "C'est révolutionnaire", "Avant vs Après", "Le truc qu'on te cache"],
+    en: ["Nobody talks about this but...", "I discovered the secret", "Stop doing this in 2025", "POV: You discover the truth", "Wait... WHAT?!", "I didn't think it was possible", "Everyone's wrong", "It's revolutionary", "Before vs After", "The thing they hide"],
+    es: ["Nadie habla de esto pero...", "Descubrí el secreto", "Para de hacer esto en 2025", "POV: Descubres la verdad", "Espera... ¿QUÉ?!", "No pensé que fuera posible", "Todos están equivocados", "Es revolucionario", "Antes vs Después", "Lo que te ocultan"]
+  };
+  
+  let hookList = '';
+  const displayCount = Math.min(count, 10);
+  for (let i = 0; i < displayCount; i++) {
+    hookList += `<div style="background:#f8f9fa;padding:15px;margin-bottom:10px;border-radius:10px;border-left:4px solid #667eea;">
+      <strong>Hook #${i+1}:</strong> ${hooksDB[lang][i]}
+    </div>`;
+  }
+  
+  return `
+<h2 style="color:#667eea;margin-bottom:20px;">🔥 ${count} Hooks ${lang==='fr'?'Viraux':lang==='en'?'Viral':'Virales'}</h2>
+<div style="background:#f8f9fa;padding:20px;border-radius:10px;margin-bottom:20px;">
+  <p><strong>${translations[lang].platform}:</strong> ${platform}</p>
+</div>
+${hookList}
+<p style="padding:15px;background:#fff3cd;border-radius:10px;margin-top:20px;">
+  <strong>${translations[lang].note}:</strong> ${translations[lang].connect_api}
+</p>
+`;
 }
 
 function generateFullScript(niche, platform, prompt, count, lang) {
-  return '<h2 style="color: #667eea;">🎬 Script Complet</h2><p>Script optimisé pour ' + platform + '</p>';
+  const t = translations[lang];
+  return `
+<h2 style="color:#667eea;margin-bottom:20px;">🎬 ${count} Script${count>1?'s':''} Complet${count>1?'s':''}</h2>
+<div style="background:#fff;border:2px solid #667eea;padding:25px;border-radius:15px;">
+  <h3 style="color:#667eea;">📹 Script Vidéo - ${platform.toUpperCase()}</h3>
+  <p><strong>${t.duration}:</strong> ${platformDurations[platform]}</p>
+  <hr style="margin:20px 0;">
+  
+  <div style="background:#f8f9fa;padding:15px;border-radius:10px;margin:15px 0;">
+    <h4 style="color:#667eea;">🎯 ${t.hook} (0-3s)</h4>
+    <p>"${lang==='fr'?'Tu perds de l\'argent si tu ne sais pas ça':lang==='en'?'You\'re losing money if you don\'t know this':'Pierdes dinero si no sabes esto'}"</p>
+  </div>
+  
+  <div style="background:#fff3cd;padding:15px;border-radius:10px;margin:15px 0;">
+    <h4>💬 ${t.body} (3-20s)</h4>
+    <p>${lang==='fr'?'Présentation problème + solution':'Problem + solution presentation'}</p>
+    <ul style="margin-left:20px;">
+      <li>${lang==='fr'?'Bénéfice #1':'Benefit #1'}</li>
+      <li>${lang==='fr'?'Bénéfice #2':'Benefit #2'}</li>
+      <li>${lang==='fr'?'Preuve sociale':'Social proof'}</li>
+    </ul>
+  </div>
+  
+  <div style="background:#667eea;color:white;padding:15px;border-radius:10px;">
+    <h4>🚀 ${t.cta} (20-30s)</h4>
+    <p>"${lang==='fr'?'Lien en bio MAINTENANT':lang==='en'?'Link in bio NOW':'Enlace en bio AHORA'}"</p>
+  </div>
+</div>
+<p style="margin-top:20px;padding:15px;background:#fff3cd;border-radius:10px;">
+  <strong>${t.note}:</strong> ${t.connect_api}
+</p>
+`;
 }
 
 function generateAgencyScripts(niche, platform, prompt, count, lang) {
-  return '<h2 style="color: #667eea;">🏢 Package Agence: ' + count + ' Scripts</h2><p>Package professionnel</p>';
-}
+  const t = translations[lang];
+  return `
+<h2 style="color:#667eea;margin-bottom:20px;">🏢 Package Agence: ${count} Scripts</h2>
+<div style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;padding:30px;border-radius:15px;margin-bottom:20px;">
+  <h3>${lang==='fr'?'OFFRE AGENCE PREMIUM':lang==='en'?'PREMIUM AGENCY OFFER':'OFERTA AGENCIA PREMIUM'}</h3>
+  <p style="font-size:18px;"><strong>${count} scripts ${lang==='fr'?'optimisés':'optimized'}</strong></p>
+  <p>${t.platform}: ${platform.toUpperCase()}</p>
+</div>
 
-function getNicheName(niche) {
-  return niche;
+<div style="background:#fff;border:2px solid #667eea;padding:25px;border-radius:15px;">
+  <h3 style="color:#667eea;">📦 ${lang==='fr'?'Contenu':'Content'}</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin:20px 0;">
+    <div style="background:#f8f9fa;padding:15px;border-radius:10px;text-align:center;">
+      <h4 style="color:#667eea;font-size:32px;">${Math.floor(count*0.4)}</h4>
+      <p>Scripts UGC</p>
+    </div>
+    <div style="background:#f8f9fa;padding:15px;border-radius:10px;text-align:center;">
+      <h4 style="color:#667eea;font-size:32px;">${Math.floor(count*0.3)}</h4>
+      <p>Hooks</p>
+    </div>
+    <div style="background:#f8f9fa;padding:15px;border-radius:10px;text-align:center;">
+      <h4 style="color:#667eea;font-size:32px;">${Math.floor(count*0.3)}</h4>
+      <p>Scripts Pub</p>
+    </div>
+  </div>
+  
+  <ul style="line-height:2.5;">
+    <li>✅ ${count} scripts professionnels</li>
+    <li>✅ Hooks ${lang==='fr'?'testés':'tested'}</li>
+    <li>✅ Timings ${lang==='fr'?'précis':'precise'}</li>
+    <li>✅ ${lang==='fr'?'Variations A/B':'A/B variations'}</li>
+  </ul>
+</div>
+<p style="margin-top:20px;padding:15px;background:#667eea;color:white;border-radius:10px;text-align:center;">
+  <strong>${lang==='fr'?'Prêt à scaler ?':lang==='en'?'Ready to scale?':'¿Listo para escalar?'}</strong><br>
+  ${t.connect_api}
+</p>
+`;
 }
