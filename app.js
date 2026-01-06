@@ -169,9 +169,9 @@ ${count > 2 ? `
 
 function generateHooks(niche, platform, prompt, count, lang) {
   const hooksDB = {
-    fr: ["Personne n'en parle mais...", "J'ai découvert le secret", "Arrête de faire ça en 2025", "POV: Tu découvres la vérité", "Attendez... QUOI ?!", "Je pensais pas que c'était possible", "Tout le monde se trompe", "C'est révolutionnaire", "Avant vs Après", "Le truc qu'on te cache"],
-    en: ["Nobody talks about this but...", "I discovered the secret", "Stop doing this in 2025", "POV: You discover the truth", "Wait... WHAT?!", "I didn't think it was possible", "Everyone's wrong", "It's revolutionary", "Before vs After", "The thing they hide"],
-    es: ["Nadie habla de esto pero...", "Descubrí el secreto", "Para de hacer esto en 2025", "POV: Descubres la verdad", "Espera... ¿QUÉ?!", "No pensé que fuera posible", "Todos están equivocados", "Es revolucionario", "Antes vs Después", "Lo que te ocultan"]
+    fr: ["Personne n'en parle mais...", "J'ai découvert le secret", "Arrête de faire ça en 2026", "POV: Tu découvres la vérité", "Attendez... QUOI ?!", "Je pensais pas que c'était possible", "Tout le monde se trompe", "C'est révolutionnaire", "Avant vs Après", "Le truc qu'on te cache"],
+    en: ["Nobody talks about this but...", "I discovered the secret", "Stop doing this in 2026", "POV: You discover the truth", "Wait... WHAT?!", "I didn't think it was possible", "Everyone's wrong", "It's revolutionary", "Before vs After", "The thing they hide"],
+    es: ["Nadie habla de esto pero...", "Descubrí el secreto", "Para de hacer esto en 2026", "POV: Descubres la verdad", "Espera... ¿QUÉ?!", "No pensé que fuera posible", "Todos están equivocados", "Es revolucionario", "Antes vs Después", "Lo que te ocultan"]
   };
   
   let hookList = '';
@@ -179,9 +179,7 @@ function generateHooks(niche, platform, prompt, count, lang) {
   for (let i = 0; i < displayCount; i++) {
     hookList += `<div style="background:#f8f9fa;padding:15px;margin-bottom:10px;border-radius:10px;border-left:4px solid #667eea;">
       <strong>Hook #${i+1}:</strong> ${hooksDB[lang][i]}
-    </div>`;
-  }
-  
+    </div>`;  
   return `
 <h2 style="color:#667eea;margin-bottom:20px;">🔥 ${count} Hooks ${lang==='fr'?'Viraux':lang==='en'?'Viral':'Virales'}</h2>
 <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin-bottom:20px;">
