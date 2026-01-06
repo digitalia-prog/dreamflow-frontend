@@ -179,7 +179,9 @@ function generateHooks(niche, platform, prompt, count, lang) {
   for (let i = 0; i < displayCount; i++) {
     hookList += `<div style="background:#f8f9fa;padding:15px;margin-bottom:10px;border-radius:10px;border-left:4px solid #667eea;">
       <strong>Hook #${i+1}:</strong> ${hooksDB[lang][i]}
-    </div>`;  
+    </div>`;
+  }
+  
   return `
 <h2 style="color:#667eea;margin-bottom:20px;">🔥 ${count} Hooks ${lang==='fr'?'Viraux':lang==='en'?'Viral':'Virales'}</h2>
 <div style="background:#f8f9fa;padding:20px;border-radius:10px;margin-bottom:20px;">
