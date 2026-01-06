@@ -16,37 +16,113 @@ body {
 }
 
 .sidebar {
-  width: 250px;
+  width: 280px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  padding: 30px;
+  padding: 30px 20px;
   color: white;
+  overflow-y: auto;
 }
 
 .sidebar h2 {
-  font-size: 24px;
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.sidebar > p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.menu {
+  margin-top: 20px;
+}
+
+.menu h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.template-btn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
   margin-bottom: 10px;
+  text-align: left;
+  transition: all 0.3s;
+}
+
+.template-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(5px);
 }
 
 .content {
   flex: 1;
-  padding: 50px;
+  padding: 40px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 h1 {
   color: white;
-  font-size: 48px;
+  font-size: 42px;
   margin-bottom: 30px;
   text-align: center;
 }
 
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 30px;
+}
+
+.option-group {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.option-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 14px;
+}
+
+select, input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+select:focus, input[type="number"]:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
 #prompt {
   width: 100%;
-  max-width: 600px;
+  max-width: 900px;
   height: 150px;
   padding: 20px;
   border-radius: 15px;
@@ -54,23 +130,25 @@ h1 {
   font-size: 16px;
   resize: vertical;
   margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-button {
+.generate-btn {
   background: white;
   color: #667eea;
   border: none;
-  padding: 15px 40px;
+  padding: 18px 50px;
   border-radius: 30px;
   font-size: 18px;
-  f
-font-weight: bold;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
+.generate-btn:hover {
   transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 #result {
@@ -78,9 +156,45 @@ button:hover {
   background: white;
   padding: 30px;
   border-radius: 15px;
-  max-width: 600px;
+  max-width: 900px;
   width: 100%;
-  min-height: 100px;
+  min-height: 200px;
   white-space: pre-wrap;
-  font-family: monospace;
+  line-height: 1.8;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+#result.show {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
