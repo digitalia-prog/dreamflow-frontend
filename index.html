@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DreamFlow Pro – Générateur de Scripts IA</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="app">
     <aside class="sidebar">
       <h2>🚀 DreamFlow</h2>
       <p>IA Scripts Pro</p>
+      
+      <div class="menu">
+        <h3>Navigation</h3>
+        <button class="nav-btn active" onclick="showSection('generator')">✨ Générateur</button>
+        <button class="nav-btn" onclick="showSection('dashboard')">📊 Dashboard</button>
+      </div>
       
       <div class="menu">
         <h3>Templates</h3>
@@ -23,178 +30,234 @@
     </aside>
 
     <main class="content">
-      <h1>Générateur de Scripts IA</h1>
-      
-      <div class="options">
-        <div class="option-group">
-          <label>🌍 Langue :</label>
-          <select id="language">
-            <option value="fr">🇫🇷 Français</option>
-            <option value="en">🇬🇧 English</option>
-            <option value="es">🇪🇸 Español</option>
-          </select>
+      <!-- SECTION GÉNÉRATEUR -->
+      <div id="generator-section" class="section active">
+        <h1>Générateur de Scripts IA</h1>
+        
+        <div class="options">
+          <div class="option-group">
+            <label>🌍 Langue :</label>
+            <select id="language">
+              <option value="fr">🇫🇷 Français</option>
+              <option value="en">🇬🇧 English</option>
+              <option value="es">🇪🇸 Español</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label>📱 Plateforme :</label>
+            <select id="platform">
+              <option value="tiktok">TikTok</option>
+              <option value="instagram-reels">Instagram Reels</option>
+              <option value="instagram-stories">Instagram Stories</option>
+              <option value="facebook-reels">Facebook Reels</option>
+              <option value="facebook-stories">Facebook Stories</option>
+              <option value="youtube-shorts">YouTube Shorts</option>
+              <option value="snapchat">Snapchat</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="twitter">X (Twitter)</option>
+              <option value="pinterest">Pinterest</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label>📝 Type de contenu :</label>
+            <select id="contentType">
+              <option value="ugc">UGC (User Generated Content)</option>
+              <option value="hook">Hook accrocheur</option>
+              <option value="script">Script complet</option>
+              <option value="agence">Présentation agence</option>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label>🎯 Niche :</label>
+            <select id="niche">
+              <optgroup label="🛍️ E-COMMERCE & RETAIL">
+                <option value="ecommerce">E-commerce général</option>
+                <option value="dropshipping">Dropshipping</option>
+                <option value="fashion">Mode & Fashion</option>
+                <option value="luxe">Luxe & Premium</option>
+                <option value="streetwear">Streetwear</option>
+              </optgroup>
+              <optgroup label="💄 BEAUTÉ & BIEN-ÊTRE">
+                <option value="beaute">Beauté & Cosmétiques</option>
+                <option value="skincare">Skincare</option>
+                <option value="makeup">Maquillage</option>
+                <option value="parfum">Parfumerie</option>
+                <option value="coiffure">Coiffure</option>
+                <option value="onglerie">Onglerie</option>
+                <option value="spa">Spa & Wellness</option>
+              </optgroup>
+              <optgroup label="💪 SANTÉ & FITNESS">
+                <option value="fitness">Fitness & Musculation</option>
+                <option value="yoga">Yoga & Méditation</option>
+                <option value="nutrition">Nutrition & Diététique</option>
+                <option value="supplements">Compléments alimentaires</option>
+                <option value="sport">Équipement sportif</option>
+                <option value="coaching">Coaching personnel</option>
+              </optgroup>
+              <optgroup label="📱 TECH & DIGITAL">
+                <option value="tech">Tech & Gadgets</option>
+                <option value="gaming">Gaming & Esport</option>
+                <option value="software">Logiciels & SaaS</option>
+                <option value="apps">Applications mobiles</option>
+                <option value="crypto">Crypto & NFT</option>
+                <option value="ai">Intelligence Artificielle</option>
+              </optgroup>
+              <optgroup label="🏠 MAISON & DÉCO">
+                <option value="deco">Décoration intérieure</option>
+                <option value="mobilier">Mobilier & Design</option>
+                <option value="bricolage">Bricolage & DIY</option>
+                <option value="jardin">Jardinage</option>
+                <option value="electromenager">Électroménager</option>
+              </optgroup>
+              <optgroup label="🍔 FOOD & DRINK">
+                <option value="food">Food & Gastronomie</option>
+                <option value="restaurant">Restaurant & HoReCa</option>
+                <option value="vegan">Vegan & Bio</option>
+                <option value="patisserie">Pâtisserie & Boulangerie</option>
+                <option value="boissons">Boissons & Cocktails</option>
+                <option value="mealprep">Meal Prep</option>
+              </optgroup>
+              <optgroup label="🎓 ÉDUCATION & FORMATION">
+                <option value="education">Éducation & E-learning</option>
+                <option value="coaching-business">Coaching business</option>
+                <option value="langues">Langues étrangères</option>
+                <option value="dev-perso">Développement personnel</option>
+                <option value="finance-perso">Finance personnelle</option>
+              </optgroup>
+              <optgroup label="✈️ VOYAGE & LIFESTYLE">
+                <option value="voyage">Voyage & Tourisme</option>
+                <option value="hotel">Hôtellerie</option>
+                <option value="lifestyle">Lifestyle</option>
+                <option value="luxe-travel">Voyage de luxe</option>
+              </optgroup>
+              <optgroup label="👶 FAMILLE & ENFANTS">
+                <option value="bebe">Bébé & Puériculture</option>
+                <option value="jouets">Jouets & Jeux</option>
+                <option value="parentalite">Parentalité</option>
+                <option value="education-enfants">Éducation enfants</option>
+              </optgroup>
+              <optgroup label="🐕 ANIMAUX">
+                <option value="animaux">Animaux de compagnie</option>
+                <option value="animalerie">Animalerie</option>
+                <option value="veterinaire">Vétérinaire</option>
+              </optgroup>
+              <optgroup label="🚗 AUTO & MOTO">
+                <option value="auto">Automobile</option>
+                <option value="moto">Moto</option>
+                <option value="accessoires-auto">Accessoires auto</option>
+              </optgroup>
+              <optgroup label="🎨 ART & CRÉATIVITÉ">
+                <option value="art">Art & Design</option>
+                <option value="photographie">Photographie</option>
+                <option value="artisanat">Artisanat</option>
+                <option value="musique">Musique</option>
+              </optgroup>
+              <optgroup label="💼 BUSINESS & SERVICES">
+                <option value="agence-marketing">Agence marketing</option>
+                <option value="agence-web">Agence web</option>
+                <option value="consulting">Consulting</option>
+                <option value="immobilier">Immobilier</option>
+                <option value="assurance">Assurance</option>
+                <option value="banque">Banque & Finance</option>
+                <option value="juridique">Juridique</option>
+              </optgroup>
+              <optgroup label="🎮 DIVERTISSEMENT">
+                <option value="streaming">Streaming & Média</option>
+                <option value="evenementiel">Événementiel</option>
+                <option value="cinema">Cinéma & Séries</option>
+                <option value="livre">Livres & Édition</option>
+              </optgroup>
+              <optgroup label="🌱 ÉCO & DURABLE">
+                <option value="ecologie">Écologie & Zero waste</option>
+                <option value="bio">Bio & Naturel</option>
+                <option value="durable">Développement durable</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="option-group">
+            <label>📊 Nombre de scripts (1-1000) :</label>
+            <input type="number" id="scriptCount" min="1" max="1000" value="3" placeholder="Ex: 50">
+          </div>
         </div>
 
-        <div class="option-group">
-          <label>📱 Plateforme :</label>
-          <select id="platform">
-            <option value="tiktok">TikTok</option>
-            <option value="instagram-reels">Instagram Reels</option>
-            <option value="instagram-stories">Instagram Stories</option>
-            <option value="facebook-reels">Facebook Reels</option>
-            <option value="facebook-stories">Facebook Stories</option>
-            <option value="youtube-shorts">YouTube Shorts</option>
-            <option value="snapchat">Snapchat</option>
-            <option value="linkedin">LinkedIn</option>
-            <option value="twitter">X (Twitter)</option>
-            <option value="pinterest">Pinterest</option>
-          </select>
-        </div>
-
-        <div class="option-group">
-          <label>📝 Type de contenu :</label>
-          <select id="contentType">
-            <option value="ugc">UGC (User Generated Content)</option>
-            <option value="hook">Hook accrocheur</option>
-            <option value="script">Script complet</option>
-            <option value="agence">Présentation agence</option>
-          </select>
-        </div>
-
-        <div class="option-group">
-          <label>🎯 Niche :</label>
-          <select id="niche">
-            <optgroup label="🛍️ E-COMMERCE & RETAIL">
-              <option value="ecommerce">E-commerce général</option>
-              <option value="dropshipping">Dropshipping</option>
-              <option value="fashion">Mode & Fashion</option>
-              <option value="luxe">Luxe & Premium</option>
-              <option value="streetwear">Streetwear</option>
-            </optgroup>
-            
-            <optgroup label="💄 BEAUTÉ & BIEN-ÊTRE">
-              <option value="beaute">Beauté & Cosmétiques</option>
-              <option value="skincare">Skincare</option>
-              <option value="makeup">Maquillage</option>
-              <option value="parfum">Parfumerie</option>
-              <option value="coiffure">Coiffure</option>
-              <option value="onglerie">Onglerie</option>
-              <option value="spa">Spa & Wellness</option>
-            </optgroup>
-            
-            <optgroup label="💪 SANTÉ & FITNESS">
-              <option value="fitness">Fitness & Musculation</option>
-              <option value="yoga">Yoga & Méditation</option>
-              <option value="nutrition">Nutrition & Diététique</option>
-              <option value="supplements">Compléments alimentaires</option>
-              <option value="sport">Équipement sportif</option>
-              <option value="coaching">Coaching personnel</option>
-            </optgroup>
-            
-            <optgroup label="📱 TECH & DIGITAL">
-              <option value="tech">Tech & Gadgets</option>
-              <option value="gaming">Gaming & Esport</option>
-              <option value="software">Logiciels & SaaS</option>
-              <option value="apps">Applications mobiles</option>
-              <option value="crypto">Crypto & NFT</option>
-              <option value="ai">Intelligence Artificielle</option>
-            </optgroup>
-            
-            <optgroup label="🏠 MAISON & DÉCO">
-              <option value="deco">Décoration intérieure</option>
-              <option value="mobilier">Mobilier & Design</option>
-              <option value="bricolage">Bricolage & DIY</option>
-              <option value="jardin">Jardinage</option>
-              <option value="electromenager">Électroménager</option>
-            </optgroup>
-            
-            <optgroup label="🍔 FOOD & DRINK">
-              <option value="food">Food & Gastronomie</option>
-              <option value="restaurant">Restaurant & HoReCa</option>
-              <option value="vegan">Vegan & Bio</option>
-              <option value="patisserie">Pâtisserie & Boulangerie</option>
-              <option value="boissons">Boissons & Cocktails</option>
-              <option value="mealprep">Meal Prep</option>
-            </optgroup>
-            
-            <optgroup label="🎓 ÉDUCATION & FORMATION">
-              <option value="education">Éducation & E-learning</option>
-              <option value="coaching-business">Coaching business</option>
-              <option value="langues">Langues étrangères</option>
-              <option value="dev-perso">Développement personnel</option>
-              <option value="finance-perso">Finance personnelle</option>
-            </optgroup>
-            
-            <optgroup label="✈️ VOYAGE & LIFESTYLE">
-              <option value="voyage">Voyage & Tourisme</option>
-              <option value="hotel">Hôtellerie</option>
-              <option value="lifestyle">Lifestyle</option>
-              <option value="luxe-travel">Voyage de luxe</option>
-            </optgroup>
-            
-            <optgroup label="👶 FAMILLE & ENFANTS">
-              <option value="bebe">Bébé & Puériculture</option>
-              <option value="jouets">Jouets & Jeux</option>
-              <option value="parentalite">Parentalité</option>
-              <option value="education-enfants">Éducation enfants</option>
-            </optgroup>
-            
-            <optgroup label="🐕 ANIMAUX">
-              <option value="animaux">Animaux de compagnie</option>
-              <option value="animalerie">Animalerie</option>
-              <option value="veterinaire">Vétérinaire</option>
-            </optgroup>
-            
-            <optgroup label="🚗 AUTO & MOTO">
-              <option value="auto">Automobile</option>
-              <option value="moto">Moto</option>
-              <option value="accessoires-auto">Accessoires auto</option>
-            </optgroup>
-            
-            <optgroup label="🎨 ART & CRÉATIVITÉ">
-              <option value="art">Art & Design</option>
-              <option value="photographie">Photographie</option>
-              <option value="artisanat">Artisanat</option>
-              <option value="musique">Musique</option>
-            </optgroup>
-            
-            <optgroup label="💼 BUSINESS & SERVICES">
-              <option value="agence-marketing">Agence marketing</option>
-              <option value="agence-web">Agence web</option>
-              <option value="consulting">Consulting</option>
-              <option value="immobilier">Immobilier</option>
-              <option value="assurance">Assurance</option>
-              <option value="banque">Banque & Finance</option>
-              <option value="juridique">Juridique</option>
-            </optgroup>
-            
-            <optgroup label="🎮 DIVERTISSEMENT">
-              <option value="streaming">Streaming & Média</option>
-              <option value="evenementiel">Événementiel</option>
-              <option value="cinema">Cinéma & Séries</option>
-              <option value="livre">Livres & Édition</option>
-            </optgroup>
-            
-            <optgroup label="🌱 ÉCO & DURABLE">
-              <option value="ecologie">Écologie & Zero waste</option>
-              <option value="bio">Bio & Naturel</option>
-              <option value="durable">Développement durable</option>
-            </optgroup>
-          </select>
-        </div>
-
-        <div class="option-group">
-          <label>📊 Nombre de scripts (1-1000) :</label>
-          <input type="number" id="scriptCount" min="1" max="1000" value="3" placeholder="Ex: 50">
-        </div>
+        <textarea id="prompt" placeholder="Décris ton produit ou service...
+Ex : Crème hydratante bio pour peaux sensibles, texture légère, résultats visibles en 7 jours"></textarea>
+        
+        <button class="generate-btn" onclick="generate()">✨ Générer les Scripts</button>
+        
+        <div id="result"></div>
       </div>
 
-      <textarea id="prompt" placeholder="Décris ton produit ou service...
-Ex : Crème hydratante bio pour peaux sensibles, texture légère, résultats visibles en 7 jours"></textarea>
-      
-      <button class="generate-btn" onclick="generate()">✨ Générer les Scripts</button>
-      
-      <div id="result"></div>
+      <!-- SECTION DASHBOARD -->
+      <div id="dashboard-section" class="section">
+        <h1>📊 Dashboard Analytics</h1>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📝</div>
+            <div class="stat-info">
+              <h3>Scripts Générés</h3>
+              <p class="stat-number" id="totalScripts">1,247</p>
+              <span class="stat-change positive">+12% ce mois</span>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-info">
+              <h3>Taux de Conversion</h3>
+              <p class="stat-number">87%</p>
+              <span class="stat-change positive">+5% vs mois dernier</span>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">⏱️</div>
+            <div class="stat-info">
+              <h3>Temps Moyen</h3>
+              <p class="stat-number">2.4s</p>
+              <span class="stat-change negative">-0.3s vs mois dernier</span>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-info">
+              <h3>Niches Actives</h3>
+              <p class="stat-number">23</p>
+              <span class="stat-change positive">+3 nouvelles</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3>📈 Évolution des Générations</h3>
+            <canvas id="generationsChart"></canvas>
+          </div>
+          
+          <div class="chart-card">
+            <h3>📱 Répartition par Plateforme</h3>
+            <canvas id="platformsChart"></canvas>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3>🎯 Top 5 Niches</h3>
+            <canvas id="nichesChart"></canvas>
+          </div>
+          
+          <div class="chart-card">
+            <h3>📊 Types de Contenu</h3>
+            <canvas id="contentTypesChart"></canvas>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 

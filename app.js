@@ -269,3 +269,273 @@ function generateAgencyScripts(niche, platform, prompt, count, lang) {
 </p>
 `;
 }
+
+// Fonction pour changer de section
+function showSection(sectionName) {
+  // Masquer toutes les sections
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  
+  // Afficher la section demandée
+  if (sectionName === 'generator') {
+    document.getElementById('generator-section').classList.add('active');
+    document.querySelectorAll('.nav-btn')[0].classList.add('active');
+  } else if (sectionName === 'dashboard') {
+    document.getElementById('dashboard-section').classList.add('active');
+    document.querySelectorAll('.nav-btn')[1].classList.add('active');
+    initCharts();
+  }
+}
+
+// Initialiser les graphiques
+function initCharts() {
+  // Graphique d'évolution
+  const ctx1 = document.getElementById('generationsChart');
+  if (ctx1 && !ctx1.chart) {
+    ctx1.chart = new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil'],
+        datasets: [{
+          label: 'Scripts générés',
+          data: [65, 89, 120, 151, 182, 205, 247],
+          borderColor: '#a855f7',
+          backgroundColor: 'rgba(168, 85, 247, 0.1)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { labels: { color: '#c084fc' } }
+        },
+        scales: {
+          y: { 
+            ticks: { color: '#c084fc' },
+            grid: { color: 'rgba(138, 43, 226, 0.1)' }
+          },
+          x: { 
+            ticks: { color: '#c084fc' },
+            grid: { color: 'rgba(138, 43, 226, 0.1)' }
+          }
+        }
+      }
+    });
+  }
+
+  // Graphique plateformes
+  const ctx2 = document.getElementById('platformsChart');
+  if (ctx2 && !ctx2.chart) {
+    ctx2.chart = new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: ['TikTok', 'Instagram', 'YouTube', 'Facebook', 'Autres'],
+        datasets: [{
+          data: [35, 28, 18, 12, 7],
+          backgroundColor: ['#a855f7', '#ec4899', '#8b5cf6', '#c084fc', '#e9d5ff']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { labels: { color: '#c084fc' } }
+        }
+      }
+    });
+  }
+
+  // Graphique niches
+  const ctx3 = document.getElementById('nichesChart');
+  if (ctx3 && !ctx3.chart) {
+    ctx3.chart = new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: ['Beauté', 'Tech', 'Fitness', 'E-commerce', 'Food'],
+        datasets: [{
+          label: 'Générations',
+          data: [245, 198, 167, 143, 128],
+          backgroundColor: 'rgba(168, 85, 247, 0.8)',
+          borderColor: '#a855f7',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { labels: { color: '#c084fc' } }
+        },
+        scales: {
+          y: { 
+            ticks: { color: '#c084fc' },
+            grid: { color: 'rgba(138, 43, 226, 0.1)' }
+          },
+          x: { 
+            ticks: { color: '#c084fc' },
+            grid: { color: 'rgba(138, 43, 226, 0.1)' }
+          }
+        }
+      }
+    });
+  }
+
+  // Graphique types de contenu
+  const ctx4 = document.getElementById('contentTypesChart');
+  if (ctx4 && !ctx4.chart) {
+    ctx4.chart = new Chart(ctx4, {
+      type: 'pie',
+      data: {
+        labels: ['UGC', 'Hooks', 'Scripts', 'Agence'],
+        datasets: [{
+          data: [42, 28, 18, 12],
+          backgroundColor: ['#a855f7', '#ec4899', '#8b5cf6', '#c084fc']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { labels: { color: '#c084fc' } }
+        }
+      }
+    });
+  }
+}
+
+// Fonction pour changer de section
+function showSection(sectionName) {
+  // Masquer toutes les sections
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  
+  // Afficher la section demandée
+  if (sectionName === 'generator') {
+    document.getElementById('generator-section').classList.add('active');
+    document.querySelectorAll('.nav-btn')[0].classList.add('active');
+  } else if (sectionName === 'dashboard') {
+    document.getElementById('dashboard-section').classList.add('active');
+    document.querySelectorAll('.nav-btn')[1].classList.add('active');
+    initCharts();
+  }
+}
+
+// Initialiser les graphiques
+function initCharts() {
+  // Graphique d'évolution
+  const ctx1 = document.getElementById('generationsChart');
+  if (ctx1 && !ctx1.chart) {
+    ctx1.chart = new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil'],
+        datasets: [{
+          label: 'Scripts générés',
+          data: [65, 89, 120, 151, 182, 205, 247],
+          borderColor: '#a855f7',
+          backgroundColor: 'rgba(168, 85, 247, 0.1)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { labels: { color: '#c084fc' } }
+        },
+        scales: {
+          y: { 
+            ticks: { color: '#c084fc' },
+            grid: { color: 'rgba(138, 43, 226, 0.1)' }
+          },
+          x: { 
+            ticks: { color: '#c084fc' },
+            grid: { color: 'rgba(138, 43, 226, 0.1)' }
+          }
+        }
+      }
+    });
+  }
+
+  // Graphique plateformes
+  const ctx2 = document.getElementById('platformsChart');
+  if (ctx2 && !ctx2.chart) {
+    ctx2.chart = new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: ['TikTok', 'Instagram', 'YouTube', 'Facebook', 'Autres'],
+        datasets: [{
+          data: [35, 28, 18, 12, 7],
+          backgroundColor: ['#a855f7', '#ec4899', '#8b5cf6', '#c084fc', '#e9d5ff']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { labels: { color: '#c084fc' } }
+        }
+      }
+    });
+  }
+
+  // Graphique niches
+  const ctx3 = document.getElementById('nichesChart');
+  if (ctx3 && !ctx3.chart) {
+    ctx3.chart = new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: ['Beauté', 'Tech', 'Fitness', 'E-commerce', 'Food'],
+        datasets: [{
+          label: 'Générations',
+          data: [245, 198, 167, 143, 128],
+          backgroundColor: 'rgba(168, 85, 247, 0.8)',
+          borderColor: '#a855f7',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { labels: { color: '#c084fc' } }
+        },
+        scales: {
+          y: { 
+            ticks: { color: '#c084fc' },
+            grid: { color: 'rgba(138, 43, 226, 0.1)' }
+          },
+          x: { 
+            ticks: { color: '#c084fc' },
+            grid: { color: 'rgba(138, 43, 226, 0.1)' }
+          }
+        }
+      }
+    });
+  }
+
+  // Graphique types de contenu
+  const ctx4 = document.getElementById('contentTypesChart');
+  if (ctx4 && !ctx4.chart) {
+    ctx4.chart = new Chart(ctx4, {
+      type: 'pie',
+      data: {
+        labels: ['UGC', 'Hooks', 'Scripts', 'Agence'],
+        datasets: [{
+          data: [42, 28, 18, 12],
+          backgroundColor: ['#a855f7', '#ec4899', '#8b5cf6', '#c084fc']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { labels: { color: '#c084fc' } }
+        }
+      }
+    });
+  }
+}
