@@ -241,3 +241,49 @@ select option {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(168, 85, 247, 0.7);
 }
+
+/* Fix pour les résultats - meilleure lisibilité */
+#result {
+  color: #e9d5ff !important;
+}
+
+#result h2 {
+  color: #a855f7 !important;
+  margin-bottom: 15px !important;
+}
+
+#result h3 {
+  color: #c084fc !important;
+  margin-top: 15px !important;
+  margin-bottom: 10px !important;
+}
+
+#result h4 {
+  color: #a855f7 !important;
+  margin-top: 10px !important;
+}
+
+#result p {
+  color: #e9d5ff !important;
+  margin: 8px 0 !important;
+}
+
+#result strong {
+  color: #c084fc !important;
+}
+
+#result ul {
+  color: #e9d5ff !important;
+}
+
+#result li {
+  color: #e9d5ff !important;
+}
+
+#result div {
+  color: #e9d5ff !important;
+}
+
+#result hr {
+  border-color: rgba(138, 43, 226, 0.3) !important;
+}
