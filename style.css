@@ -187,7 +187,7 @@ select option {
 
 #result {
   margin-top: 30px;
-  background: rgba(20, 10, 40, 0.9);
+  background: rgba(20, 10, 40, 0.95);
   padding: 30px;
   border-radius: 15px;
   max-width: 900px;
@@ -206,12 +206,45 @@ select option {
   animation: fadeIn 0.5s;
 }
 
-#result h2, #result h3, #result h4 {
+#result h2 {
   color: #a855f7;
+  margin-bottom: 20px;
+}
+
+#result h3 {
+  color: #c084fc;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+#result h4 {
+  color: #a855f7;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+#result p {
+  color: #e9d5ff;
+  margin: 10px 0;
 }
 
 #result strong {
   color: #c084fc;
+  font-weight: 600;
+}
+
+#result ul, #result li {
+  color: #e9d5ff;
+}
+
+#result div {
+  color: #e9d5ff;
+}
+
+#result hr {
+  border: none;
+  border-top: 1px solid rgba(138, 43, 226, 0.3);
+  margin: 20px 0;
 }
 
 @keyframes fadeIn {
@@ -240,50 +273,4 @@ select option {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(168, 85, 247, 0.7);
-}
-
-/* Fix pour les résultats - meilleure lisibilité */
-#result {
-  color: #e9d5ff !important;
-}
-
-#result h2 {
-  color: #a855f7 !important;
-  margin-bottom: 15px !important;
-}
-
-#result h3 {
-  color: #c084fc !important;
-  margin-top: 15px !important;
-  margin-bottom: 10px !important;
-}
-
-#result h4 {
-  color: #a855f7 !important;
-  margin-top: 10px !important;
-}
-
-#result p {
-  color: #e9d5ff !important;
-  margin: 8px 0 !important;
-}
-
-#result strong {
-  color: #c084fc !important;
-}
-
-#result ul {
-  color: #e9d5ff !important;
-}
-
-#result li {
-  color: #e9d5ff !important;
-}
-
-#result div {
-  color: #e9d5ff !important;
-}
-
-#result hr {
-  border-color: rgba(138, 43, 226, 0.3) !important;
 }
