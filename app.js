@@ -119,13 +119,13 @@ function generateUGC(niche, platform, prompt, count, lang) {
   return `
 <h2 style="color:#667eea;margin-bottom:20px;">✨ ${count} ${t.scripts_generated} UGC</h2>
 
-<div style="background:#f8f9fa;padding:20px;border-radius:10px;margin-bottom:20px;">
+<div style="background:rgba(30,15,50,0.8);padding:20px;border-radius:10px;margin-bottom:20px;">
   <p><strong>${t.platform}:</strong> ${platform}</p>
   <p><strong>${t.duration}:</strong> ${duration}</p>
   <p><strong>${t.niche}:</strong> ${niche}</p>
 </div>
 
-<div style="background:#fff3cd;padding:20px;border-radius:10px;margin-bottom:20px;">
+<div style="background:rgba(20,10,40,0.8)3cd;padding:20px;border-radius:10px;margin-bottom:20px;">
   <h3>🎬 Script UGC #1</h3>
   <p><strong>🎯 ${t.hook} (0-3s):</strong><br>"${hooks[lang][0]}"</p>
   <p><strong>💬 ${t.body} (3-20s):</strong><br>
@@ -135,7 +135,7 @@ function generateUGC(niche, platform, prompt, count, lang) {
   <p><strong>🚀 ${t.cta}:</strong><br>"${lang==='fr'?'Lien en bio pour -20% !':lang==='en'?'Link in bio for -20%!':'¡Enlace en bio para -20%!'}"</p>
 </div>
 
-<div style="background:#d1ecf1;padding:20px;border-radius:10px;margin-bottom:20px;">
+<div style="background:rgba(168,85,247,0.1);padding:20px;border-radius:10px;margin-bottom:20px;">
   <h3>🎬 Script UGC #2</h3>
   <p><strong>🎯 ${t.hook}:</strong><br>"${hooks[lang][1]}"</p>
   <p><strong>💬 ${t.body}:</strong><br>
@@ -144,7 +144,7 @@ function generateUGC(niche, platform, prompt, count, lang) {
 </div>
 
 ${count > 2 ? `
-<div style="background:#d4edda;padding:20px;border-radius:10px;margin-bottom:20px;">
+<div style="background:rgba(168,85,247,0.12);padding:20px;border-radius:10px;margin-bottom:20px;">
   <h3>🎬 Script UGC #3</h3>
   <p><strong>🎯 ${t.hook}:</strong><br>"${hooks[lang][2]}"</p>
   <p><strong>💬 ${t.body}:</strong><br>
@@ -152,7 +152,7 @@ ${count > 2 ? `
 </div>
 ` : ''}
 
-<div style="background:#e2e3e5;padding:20px;border-radius:10px;">
+<div style="background:rgba(40,20,60,0.8);padding:20px;border-radius:10px;">
   <h3>💡 ${t.tips}</h3>
   <ul style="line-height:2;">
     <li>✅ ${lang==='fr'?'Sois naturel':'Be natural'}</li>
@@ -161,7 +161,7 @@ ${count > 2 ? `
   </ul>
 </div>
 
-<p style="margin-top:20px;padding:15px;background:#fff3cd;border-radius:10px;">
+<p style="margin-top:20px;padding:15px;background:rgba(20,10,40,0.8)3cd;border-radius:10px;">
   <strong>${t.note}:</strong> ${t.connect_api}
 </p>
 `;
@@ -177,18 +177,18 @@ function generateHooks(niche, platform, prompt, count, lang) {
   let hookList = '';
   const displayCount = Math.min(count, 10);
   for (let i = 0; i < displayCount; i++) {
-    hookList += `<div style="background:#f8f9fa;padding:15px;margin-bottom:10px;border-radius:10px;border-left:4px solid #667eea;">
+    hookList += `<div style="background:rgba(30,15,50,0.8);padding:15px;margin-bottom:10px;border-radius:10px;border-left:4px solid #667eea;">
       <strong>Hook #${i+1}:</strong> ${hooksDB[lang][i]}
     </div>`;
   }
   
   return `
 <h2 style="color:#667eea;margin-bottom:20px;">🔥 ${count} Hooks ${lang==='fr'?'Viraux':lang==='en'?'Viral':'Virales'}</h2>
-<div style="background:#f8f9fa;padding:20px;border-radius:10px;margin-bottom:20px;">
+<div style="background:rgba(30,15,50,0.8);padding:20px;border-radius:10px;margin-bottom:20px;">
   <p><strong>${translations[lang].platform}:</strong> ${platform}</p>
 </div>
 ${hookList}
-<p style="padding:15px;background:#fff3cd;border-radius:10px;margin-top:20px;">
+<p style="padding:15px;background:rgba(20,10,40,0.8)3cd;border-radius:10px;margin-top:20px;">
   <strong>${translations[lang].note}:</strong> ${translations[lang].connect_api}
 </p>
 `;
@@ -198,17 +198,17 @@ function generateFullScript(niche, platform, prompt, count, lang) {
   const t = translations[lang];
   return `
 <h2 style="color:#667eea;margin-bottom:20px;">🎬 ${count} Script${count>1?'s':''} Complet${count>1?'s':''}</h2>
-<div style="background:#fff;border:2px solid #667eea;padding:25px;border-radius:15px;">
+<div style="background:rgba(20,10,40,0.8);border:2px solid #667eea;padding:25px;border-radius:15px;">
   <h3 style="color:#667eea;">📹 Script Vidéo - ${platform.toUpperCase()}</h3>
   <p><strong>${t.duration}:</strong> ${platformDurations[platform]}</p>
   <hr style="margin:20px 0;">
   
-  <div style="background:#f8f9fa;padding:15px;border-radius:10px;margin:15px 0;">
+  <div style="background:rgba(30,15,50,0.8);padding:15px;border-radius:10px;margin:15px 0;">
     <h4 style="color:#667eea;">🎯 ${t.hook} (0-3s)</h4>
     <p>"${lang==='fr'?'Tu perds de l\'argent si tu ne sais pas ça':lang==='en'?'You\'re losing money if you don\'t know this':'Pierdes dinero si no sabes esto'}"</p>
   </div>
   
-  <div style="background:#fff3cd;padding:15px;border-radius:10px;margin:15px 0;">
+  <div style="background:rgba(20,10,40,0.8)3cd;padding:15px;border-radius:10px;margin:15px 0;">
     <h4>💬 ${t.body} (3-20s)</h4>
     <p>${lang==='fr'?'Présentation problème + solution':'Problem + solution presentation'}</p>
     <ul style="margin-left:20px;">
@@ -223,7 +223,7 @@ function generateFullScript(niche, platform, prompt, count, lang) {
     <p>"${lang==='fr'?'Lien en bio MAINTENANT':lang==='en'?'Link in bio NOW':'Enlace en bio AHORA'}"</p>
   </div>
 </div>
-<p style="margin-top:20px;padding:15px;background:#fff3cd;border-radius:10px;">
+<p style="margin-top:20px;padding:15px;background:rgba(20,10,40,0.8)3cd;border-radius:10px;">
   <strong>${t.note}:</strong> ${t.connect_api}
 </p>
 `;
@@ -239,18 +239,18 @@ function generateAgencyScripts(niche, platform, prompt, count, lang) {
   <p>${t.platform}: ${platform.toUpperCase()}</p>
 </div>
 
-<div style="background:#fff;border:2px solid #667eea;padding:25px;border-radius:15px;">
+<div style="background:rgba(20,10,40,0.8);border:2px solid #667eea;padding:25px;border-radius:15px;">
   <h3 style="color:#667eea;">📦 ${lang==='fr'?'Contenu':'Content'}</h3>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin:20px 0;">
-    <div style="background:#f8f9fa;padding:15px;border-radius:10px;text-align:center;">
+    <div style="background:rgba(30,15,50,0.8);padding:15px;border-radius:10px;text-align:center;">
       <h4 style="color:#667eea;font-size:32px;">${Math.floor(count*0.4)}</h4>
       <p>Scripts UGC</p>
     </div>
-    <div style="background:#f8f9fa;padding:15px;border-radius:10px;text-align:center;">
+    <div style="background:rgba(30,15,50,0.8);padding:15px;border-radius:10px;text-align:center;">
       <h4 style="color:#667eea;font-size:32px;">${Math.floor(count*0.3)}</h4>
       <p>Hooks</p>
     </div>
-    <div style="background:#f8f9fa;padding:15px;border-radius:10px;text-align:center;">
+    <div style="background:rgba(30,15,50,0.8);padding:15px;border-radius:10px;text-align:center;">
       <h4 style="color:#667eea;font-size:32px;">${Math.floor(count*0.3)}</h4>
       <p>Scripts Pub</p>
     </div>
